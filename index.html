@@ -9,10 +9,13 @@ body {padding-top: 100px; }
 .sidebar a:hover {background-color:#DCCFB5}
 .content {margin-left:160px;padding:20px} 
 .sidebar-hidden{display:none;} .content-full{margin-left:0;}
+.search-bar {margin-bottom: 20px;} .search-bar input {padding: 8px;width: 250px;border: 1px solid #000000;border-radius: 4px;} .search-bar button {padding: 8px 15px;margin-left: 8px;border: none;border-radius: 4px;background-color: #EDE4D3;cursor: pointer;} #resultats a {display: block;color: #000000;text-decoration: none;padding: 5px 0;} #resultats a:hover {text-decoration: underline;}
 </style>
 <body style="background-color: #F5F0E8;"> 
- <script> function toggleSidebar() {document.querySelector('.sidebar').classList.toggle('sidebar-hidden');document.querySelector('.content').classList.toggle('content-full');} 
- </script>
+  
+<script> function toggleSidebar() {document.querySelector('.sidebar').classList.toggle('sidebar-hidden');document.querySelector('.content').classList.toggle('content-full');} 
+let listeRecettes = []; fetch('recettes.txt') .then(response => response.text()) .then(texte => { const lignes = texte.trim().split('\n'); listeRecettes = lignes.map(function(ligne) { const parties = ligne.split('|'); return { titre: parties[0].trim(), lien: parties[1].trim() }; }); }); function rechercherRecette() { const recherche = document.getElementById('rechercheInput').value.toLowerCase(); const resultatsDiv = document.getElementById('resultats'); resultatsDiv.innerHTML = ''; const trouvees = listeRecettes.filter(function(recette) { return recette.titre.toLowerCase().includes(recherche); }); trouvees.forEach(function(recette) { const lienHTML = document.createElement('a'); lienHTML.href = recette.lien; lienHTML.textContent = recette.titre; lienHTML.style.display = 'block'; resultatsDiv.appendChild(lienHTML); }); } document.getElementById('rechercheInput').addEventListener('keydown', function(event) { if (event.key === 'Enter') { rechercherRecette(); } });
+</script>
  
   
   <header>   <img src="Images/LOGO.png" alt="Mon logo" onclick="toggleSidebar()" style="cursor:pointer;"> <h1>Nos Recettes </h1> </header>
