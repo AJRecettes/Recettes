@@ -79,6 +79,15 @@ body {
   text-align: center;
   margin-bottom: 5px;
 }
+.recette-photo {
+  display: block;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  margin: 15px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 .recette-soustitre {
   text-align: center;
   font-family: Arial, sans-serif;
@@ -106,7 +115,7 @@ body {
 <body>
 
 <header>
-  <img src="Images/LOGO.png" alt="Mon logo" onclick="toggleSidebar()">
+  <img src="../Images/LOGO.png" alt="Mon logo" onclick="toggleSidebar()">
   <h1>Nos Recettes</h1>
 </header>
 
@@ -119,6 +128,7 @@ body {
 <div class="content content-full">
 
   <div class="recette-titre">Pancakes Healthy</div>
+  <img src="../Images/Pancakes-healthy.jpg" alt="Pancakes Healthy" class="recette-photo">
   <div class="recette-soustitre">6 pancakes environ</div>
 
   <div class="recette-section">
